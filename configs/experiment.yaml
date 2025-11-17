@@ -1,0 +1,77 @@
+experiment_name: voc2007_baseline
+output_dir: runs/voc2007_baseline
+seed: 42
+
+# data
+voc_root: ./VOCtrainval_06-Nov-2007
+image_size: 256
+batch_size: 16
+num_workers: 0
+train_split: train
+val_split: val
+
+# optimization
+max_epochs: 30
+optimizer:
+  name: adamw
+  lr: 1.0e-4
+  weight_decay: 0.01
+lr_scheduler:
+  name: cosine
+  min_lr: 1.0e-6
+  warmup_epochs: 5
+
+# losses
+loss:
+  primary: cross_entropy
+  aux: none
+  aux_weight: 0.0
+
+# models to train/eval
+models:
+  - name: unet_resnet18
+    type: unet
+    encoder: resnet18
+    pretrained: true
+  - name: unet_resnet34
+    type: unet
+    encoder: resnet34
+    pretrained: true
+  - name: unet_resnet50
+    type: unet
+    encoder: resnet50
+    pretrained: true
+  - name: deeplabv3_resnet50
+    type: deeplabv3
+    backbone: resnet50
+    pretrained: true
+  - name: sam_vit_b
+    type: sam
+    checkpoint: ./weights/sam_vit_b.pth
+    encoder_adapter: linear
+  - name: sam2_base_plus
+    type: sam2
+    model_cfg: configs/sam2.1/sam2.1_hiera_b+.yaml
+    checkpoint: ./external/sam2/sam2.1_hiera_base_plus.pt
+    freeze_encoder: false
+
+# augmentation knobs
+augmentations:
+  enabled: false
+  color_jitter: false
+  random_flip: false
+  random_crop: false
+  mixup: false
+  backend: torchvision
+
+# logging / eval
+val_interval: 1
+checkpoint_interval: 5
+num_visualizations: 4
+metrics:
+  - miou
+  - mean_dice
+  - pixel_acc
+  - per_class_iou
+  - per_class_acc
+  - hd95

@@ -1,0 +1,75 @@
+# ------------------------------
+# Binary / cache artifacts
+# ------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.dylib
+*.dll
+
+# ------------------------------
+# Virtual environments & build
+# ------------------------------
+.venv/
+env/
+venv/
+.env
+.env.*
+*.egg-info/
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+.mypy_cache/
+.pytest_cache/
+.coverage
+coverage.*
+htmlcov/
+
+# ------------------------------
+# OS / editor cruft
+# ------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ------------------------------
+# Notebook state
+# ------------------------------
+.ipynb_checkpoints/
+.notebook_cache/
+
+# ------------------------------
+# Logs & experiment outputs
+# ------------------------------
+logs/
+wandb/
+tensorboard/
+lightning_logs/
+results/
+outputs/
+artifacts/
+*.log
+
+# ------------------------------
+# Model weights & derived tensors
+# ------------------------------
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.bin
+*.npz
+
+# ------------------------------
+# Large datasets / external assets
+# ------------------------------
+PASCAL_VOC/
+VOCtest_06-Nov-2007/
+VOCtrainval_06-Nov-2007/
+external/sam2/checkpoints/
+external/sam2/sav_dataset/
+external/sam2/sam2.1_hiera_*.pt
+
