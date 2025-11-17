@@ -98,14 +98,7 @@ Use the resulting mosaics inside `figures/` or directly in LaTeX manuscripts.
 
 ---
 
-## Reproducing Reported Results
-
-| Model | mIoU | Mean Acc | Pixel Acc | Dice | HD95 ↓ |
-| --- | --- | --- | --- | --- | --- |
-| U-Net (ResNet50 encoder) | 0.2746 | 0.3880 | 0.8402 | 0.3773 | 41.2 |
-| DeepLabV3 (ResNet50 backbone) | 0.4107 | 0.5390 | 0.8554 | 0.5830 | 33.5 |
-| SAM2Adapter (frozen SAM2 encoder) | **0.5636** | **0.6150** | **0.8971** | **0.7471** | **29.4** |
-
+## Reproducing
 Steps:
 
 1. Train each model with the default config (30 epochs, AdamW, 512×512 resizing, ignore-index 255).
